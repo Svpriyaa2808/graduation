@@ -152,6 +152,58 @@
             border-radius: 3px;
         }
 
+        /* Screenshot Styles */
+        .screenshot {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            display: block;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .screenshot-container {
+            text-align: center;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .screenshot-caption {
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .screenshot-placeholder {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border: 3px dashed #9ca3af;
+            border-radius: 8px;
+            padding: 60px 20px;
+            text-align: center;
+            color: #6b7280;
+            font-size: 16px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .screenshot-placeholder::before {
+            content: "📸";
+            font-size: 48px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .screenshot-note {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
         @media print {
             body {
                 padding: 0;
@@ -162,6 +214,10 @@
             }
 
             .no-print {
+                display: none;
+            }
+
+            .screenshot-placeholder {
                 display: none;
             }
         }
@@ -181,6 +237,17 @@
     </div>
 
     <hr style="margin: 30px 0; border: 0; border-top: 2px solid #e5e7eb;">
+
+    <div class="screenshot-note no-print">
+        <strong>📸 Adding Screenshots:</strong> To add screenshots to this report:
+        <ol style="margin: 10px 0; padding-left: 20px;">
+            <li>Run <code>npm run dev</code> to start the application</li>
+            <li>Take screenshots and save to <code>docs/screenshots/</code></li>
+            <li>Use these exact filenames: <code>kanban-board-desktop.png</code>, <code>analytics-dashboard.png</code>, <code>application-list.png</code></li>
+            <li>Refresh this page to see the screenshots appear</li>
+        </ol>
+        <p>See <code>docs/SCREENSHOT_GUIDE.md</code> for detailed instructions.</p>
+    </div>
 
     <div class="section">
         <h1>1. Executive Summary</h1>
@@ -328,6 +395,29 @@
             </ul>
         </div>
 
+        <!-- Screenshot: Kanban Board -->
+        <div class="screenshot-container">
+            <img src="screenshots/kanban-board-desktop.png"
+                 alt="Kanban Board Interface"
+                 class="screenshot"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="screenshot-placeholder" style="display:none;">
+                Screenshot: Kanban Board Interface
+                <div style="font-size: 14px; margin-top: 10px;">
+                    Save screenshot as: <code>docs/screenshots/kanban-board-desktop.png</code>
+                </div>
+            </div>
+            <p class="screenshot-caption">Figure 1: Interactive Kanban board with drag-and-drop functionality across five stages</p>
+        </div>
+
+        <h3>Technical Implementation:</h3>
+        <ul>
+            <li>Used <code>@dnd-kit/core</code> and <code>@dnd-kit/sortable</code> for drag-and-drop</li>
+            <li>Implemented custom hooks for state management</li>
+            <li>Optimized rendering with React.memo and useMemo</li>
+            <li>Responsive grid layout adapting to screen sizes</li>
+        </ul>
+
         <h2>4.2 Page 2: Analytics Dashboard</h2>
         <p><strong>Purpose:</strong> Provide visual insights and statistics about the job search progress.</p>
 
@@ -349,6 +439,29 @@
             <li><strong>Success Funnel:</strong> Horizontal bar chart showing conversion at each stage</li>
         </ul>
 
+        <!-- Screenshot: Analytics Dashboard -->
+        <div class="screenshot-container">
+            <img src="screenshots/analytics-dashboard.png"
+                 alt="Analytics Dashboard"
+                 class="screenshot"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="screenshot-placeholder" style="display:none;">
+                Screenshot: Analytics Dashboard
+                <div style="font-size: 14px; margin-top: 10px;">
+                    Save screenshot as: <code>docs/screenshots/analytics-dashboard.png</code>
+                </div>
+            </div>
+            <p class="screenshot-caption">Figure 2: Comprehensive analytics dashboard with statistics and interactive charts</p>
+        </div>
+
+        <h3>Technical Implementation:</h3>
+        <ul>
+            <li>Recharts library for all visualizations</li>
+            <li>Custom analytics calculation functions</li>
+            <li>Memoized computations for performance</li>
+            <li>Responsive containers adapting to viewport</li>
+        </ul>
+
         <h2>4.3 Page 3: Application Management</h2>
         <p><strong>Purpose:</strong> Comprehensive list view with advanced filtering, sorting, and export capabilities.</p>
 
@@ -359,6 +472,29 @@
             <li><strong>Advanced Filtering:</strong> Multi-select filters for Status, Priority, and Job Type</li>
             <li><strong>Global Search:</strong> Search across all text fields</li>
             <li><strong>Data Export:</strong> CSV and HTML export with filtered/sorted data</li>
+        </ul>
+
+        <!-- Screenshot: Application Management -->
+        <div class="screenshot-container">
+            <img src="screenshots/application-list.png"
+                 alt="Application Management Table"
+                 class="screenshot"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="screenshot-placeholder" style="display:none;">
+                Screenshot: Application Management
+                <div style="font-size: 14px; margin-top: 10px;">
+                    Save screenshot as: <code>docs/screenshots/application-list.png</code>
+                </div>
+            </div>
+            <p class="screenshot-caption">Figure 3: Application management with sortable table, filters, and export options</p>
+        </div>
+
+        <h3>Technical Implementation:</h3>
+        <ul>
+            <li>Custom filter and sort utility functions</li>
+            <li>Efficient array operations with useMemo</li>
+            <li>Export functions generating downloadable files</li>
+            <li>Accessible table markup with proper ARIA labels</li>
         </ul>
     </div>
 
@@ -384,6 +520,36 @@
             <li>System preference detection on first load</li>
             <li>High contrast in both modes</li>
         </ul>
+
+        <!-- Screenshot: Dark Mode / Mobile View -->
+        <div class="screenshot-container">
+            <img src="screenshots/dark-mode.png"
+                 alt="Dark Mode Interface"
+                 class="screenshot"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="screenshot-placeholder" style="display:none;">
+                Screenshot: Dark Mode
+                <div style="font-size: 14px; margin-top: 10px;">
+                    Save screenshot as: <code>docs/screenshots/dark-mode.png</code>
+                </div>
+            </div>
+            <p class="screenshot-caption">Figure 4: Application in dark mode showing theme consistency across components</p>
+        </div>
+
+        <!-- Screenshot: Mobile View -->
+        <div class="screenshot-container">
+            <img src="screenshots/mobile-view.png"
+                 alt="Mobile Responsive Design"
+                 class="screenshot"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="screenshot-placeholder" style="display:none;">
+                Screenshot: Mobile View
+                <div style="font-size: 14px; margin-top: 10px;">
+                    Save screenshot as: <code>docs/screenshots/mobile-view.png</code>
+                </div>
+            </div>
+            <p class="screenshot-caption">Figure 5: Responsive mobile layout with touch-friendly interface</p>
+        </div>
     </div>
 
     <div class="section">
@@ -600,5 +766,16 @@ npm start</code></pre>
         <p><strong>Total Pages:</strong> 10 (excluding screenshots and appendices)</p>
         <p><strong>Author:</strong> PRIYADHARSHINI SEETHA RAM</p>
     </div>
+
+    <script>
+        // Check if screenshots exist and update placeholders
+        window.addEventListener('load', function() {
+            const images = document.querySelectorAll('.screenshot');
+            images.forEach(img => {
+                // Force reload to check if image exists
+                img.src = img.src + '?t=' + new Date().getTime();
+            });
+        });
+    </script>
 </body>
 </html>
