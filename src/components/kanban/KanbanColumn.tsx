@@ -28,7 +28,7 @@ export function KanbanColumn({
   });
 
   return (
-    <div className="flex flex-col h-full min-w-[280px]">
+    <div className="flex flex-col h-full w-full">
       {/* Column Header */}
       <div className={`${color} p-4 rounded-t-lg`}>
         <h2 className="font-semibold text-gray-800 dark:text-gray-200 flex items-center justify-between">
@@ -42,7 +42,7 @@ export function KanbanColumn({
       {/* Column Content */}
       <div
         ref={setNodeRef}
-        className={`flex-1 p-4 space-y-3 bg-gray-50 dark:bg-gray-900/50 rounded-b-lg min-h-[500px] transition-colors ${
+        className={`flex-1 p-4 space-y-3 bg-gray-50 dark:bg-gray-900/50 rounded-b-lg min-h-[300px] md:min-h-[400px] lg:min-h-[500px] transition-colors ${
           isOver ? 'bg-blue-50 dark:bg-blue-900/20' : ''
         }`}
       >
